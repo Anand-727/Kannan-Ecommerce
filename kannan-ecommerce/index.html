@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kannan Commerce AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Catamaran:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --color-maroon: #7A1F1F;
+        --color-gold: #F1C40F;
+        --color-emerald: #0A6847;
+        --color-sand: #FFFDF5;
+        --color-rani: #E31837;
+        --color-mango: #FF9F1C;
+        --color-parrot: #2ECC71;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--color-sand);
+        color: #292524;
+      }
+      
+      h1, h2, h3, h4, h5, h6, .font-heading {
+        font-family: 'Catamaran', sans-serif;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FFFDF5; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #FF9F1C; 
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #E31837; 
+      }
+      
+      /* Kolam Pattern - Minimal Dots */
+      .bg-kolam {
+        background-image: radial-gradient(#FF9F1C 1.5px, transparent 1.5px), radial-gradient(#E31837 1.5px, transparent 1.5px);
+        background-size: 24px 24px;
+        background-position: 0 0, 12px 12px;
+        opacity: 0.25;
+      }
+
+      /* Chettinad Tile Pattern - Geometric */
+      .bg-chettinad {
+        background-color: #FFFDF5;
+        background-image: 
+          linear-gradient(45deg, #FFE5B4 25%, transparent 25%, transparent 75%, #FFE5B4 75%, #FFE5B4),
+          linear-gradient(45deg, #FFE5B4 25%, transparent 25%, transparent 75%, #FFE5B4 75%, #FFE5B4);
+        background-size: 40px 40px;
+        background-position: 0 0, 20px 20px;
+      }
+      
+      .bg-gradient-festival {
+        background: linear-gradient(135deg, #7A1F1F 0%, #E31837 50%, #FF9F1C 100%);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+      
+      @keyframes cart-pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1); }
+      }
+      .animate-cart-pop {
+        animation: cart-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      @keyframes pulse-green {
+        0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6); }
+        70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+      }
+      .animate-pulse-green {
+        animation: pulse-green 0.6s ease-out;
+      }
+
+      @keyframes grab-shrink {
+        0% { transform: scale(1); }
+        20% { transform: scale(0.9) translateY(5px); } /* Press down/grab */
+        50% { transform: scale(0.8) translateY(-20px) rotate(2deg); opacity: 0.8; } /* Lift up */
+        100% { transform: scale(1) translateY(0); opacity: 1; } /* Reset */
+      }
+      .animate-grab {
+        animation: grab-shrink 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .text-gold { color: var(--color-gold); }
+      .bg-maroon { background-color: var(--color-maroon); }
+      .text-maroon { color: var(--color-maroon); }
+      .text-rani { color: var(--color-rani); }
+      .bg-rani { background-color: var(--color-rani); }
+      
+      /* Utility for traditional border */
+      .border-temple {
+         background-image: linear-gradient(90deg, #FF9F1C 50%, transparent 50%);
+         background-size: 20px 3px;
+         background-repeat: repeat-x;
+         background-position: bottom;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="antialiased selection:bg-[#FF9F1C] selection:text-[#7A1F1F]">
+    <!-- Global Chettinad Pattern Overlay -->
+    <svg class="fixed inset-0 w-full h-full pointer-events-none -z-10 opacity-[0.04]" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+       <defs>
+         <pattern id="chettinad" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect x="0" y="0" width="40" height="40" fill="none"/>
+            <path d="M20 0 L40 20 L20 40 L0 20 Z" fill="#E31837" />
+         </pattern>
+       </defs>
+       <rect width="100%" height="100%" fill="url(#chettinad)" />
+    </svg>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
